@@ -564,6 +564,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2651050982968364656}
   - component: {fileID: 1387060449345272487}
+  - component: {fileID: 4320010023979655404}
   m_Layer: 8
   m_Name: T_QuadCannon
   m_TagString: Untagged
@@ -600,16 +601,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7d0c78fdbf61046bbd317c5865ae63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shotInterval: 1
+  _shotInterval: 2
   _bulletDamage: 5
-  _bulletSpeed: 20
-  _bulletLifeSpan: 5
+  _bulletSpeed: 15
+  _bulletLifeSpan: 3
   _spawnPoints:
   - {fileID: 694026042152317239}
   - {fileID: 3057112834295698911}
   - {fileID: 4617692899339073417}
   - {fileID: 8975880933470847619}
   _turret: {fileID: 7349283820113246293}
+  _rotationSpeed: 25
+--- !u!114 &4320010023979655404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4798689556220629397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 769a32c7325f3c746ad638d346cef450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: 2533798996721437632, guid: 54e7ad3073701b445a8788b33facf0ff,
     type: 3}
-  _rotationSpeed: 25

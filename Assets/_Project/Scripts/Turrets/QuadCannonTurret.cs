@@ -6,8 +6,8 @@ public class QuadCannonTurret : AbstractTurret
 {
     [SerializeField] private Transform[] _spawnPoints;
     [SerializeField] private Transform _turret;
-    [SerializeField] private Bullet _bulletPrefab;
     [SerializeField] private float _rotationSpeed = 5f;
+    private BulletSpawner _bulletSpawner;
 
     void Start()
     {
@@ -22,6 +22,10 @@ public class QuadCannonTurret : AbstractTurret
         if (_turret == null)
         {
             _turret = transform.Find("Torretta");
+        }
+        if (_bulletSpawner == null)
+        {
+            _bulletSpawner = GetComponent<BulletSpawner>();
         }
     }
 
@@ -40,7 +44,8 @@ public class QuadCannonTurret : AbstractTurret
 
     private void Fire(Vector3 origin, Vector3 direction)
     {
-        Bullet b = Instantiate(_bulletPrefab);
+        Bullet b = _bulletSpawner.GetBullet();
+
         b.Init(_bulletDamage, _bulletSpeed, _bulletLifeSpan);
         b.Shoot(origin, direction);
     }

@@ -8,6 +8,12 @@ public class Bullet : MonoBehaviour
     private float _speed;
     private float _lifeSpan;
     private Rigidbody _rb;
+    private BulletSpawner _bulletSpawner;
+
+    public void SetBulletSpawner(BulletSpawner spawner)
+    {
+        _bulletSpawner = spawner;
+    }
 
     public void Init(int damage, float speed, float lifeSpan)
     {
@@ -23,23 +29,25 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" || collision.gameObject.layer == 11)
         {
-            gameObject.SetActive(false);
+            ReturnToPool();
         }
+    }
+
+    public void ReturnToPool()
+    {
+        if (!gameObject.activeInHierarchy) return;
+        _bulletSpawner.ReleaseBullet(this);
     }
 
     public void Shoot(Vector3 origin, Vector3 direction)
     {
         transform.position = origin;
         _rb.velocity = direction.normalized * _speed;
+
+        Invoke(nameof(ReturnToPool), _lifeSpan);
     }
 }

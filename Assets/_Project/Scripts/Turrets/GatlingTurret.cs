@@ -6,13 +6,12 @@ public class GatlingTurret : AbstractTurret
 {
     [SerializeField] private Transform[] _spawnPoints;
     [SerializeField] private Transform _turret;
-    [SerializeField] private Bullet _bulletPrefab;
     [SerializeField] private float _rangeOfShoot = 10f;
     [SerializeField] private float _rotationSpeed = 5f;
     private float _distanceFromPlayer = 0f;
     private Transform _playerTrasform;
+    private BulletSpawner _bulletSpawner;
 
-    // Start is called before the first frame update
     void Start()
     {
         if (_spawnPoints == null || _spawnPoints.Length == 0)
@@ -26,6 +25,10 @@ public class GatlingTurret : AbstractTurret
         if (_turret == null)
         {
             _turret = transform.Find("Torretta");
+        }
+        if (_bulletSpawner == null)
+        {
+            _bulletSpawner = GetComponent<BulletSpawner>();
         }
 
         GameObject _player = GameObject.FindGameObjectWithTag("Player");
@@ -54,7 +57,7 @@ public class GatlingTurret : AbstractTurret
         + _turret.right * randomSpread.x
         + _turret.up * randomSpread.y).normalized;
 
-        Bullet b = Instantiate(_bulletPrefab);
+        Bullet b = _bulletSpawner.GetBullet();
         b.Init(_bulletDamage, _bulletSpeed, _bulletLifeSpan);
         b.Shoot(origin, deviatedDirection);
     }

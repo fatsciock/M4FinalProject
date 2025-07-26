@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 4
-  _jumpHeight: 2.5
+  _jumpHeight: 2
 --- !u!1 &1830104372999734511
 GameObject:
   m_ObjectHideFlags: 0

@@ -329,6 +329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2651050982968364656}
   - component: {fileID: 4279778236248800011}
+  - component: {fileID: 5000492728228713256}
   m_Layer: 8
   m_Name: T_Cannon
   m_TagString: Untagged
@@ -365,16 +366,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b28d242b483ab448f4e513ff2d5bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shotInterval: 1.5
+  _shotInterval: 2
   _bulletDamage: 10
   _bulletSpeed: 20
   _bulletLifeSpan: 5
   _spawnPoint: {fileID: 1912691096863050016}
   _turret: {fileID: 7349283820113246293}
-  _bulletPrefab: {fileID: 2533798996721437632, guid: 54e7ad3073701b445a8788b33facf0ff,
-    type: 3}
   _rangeOfShoot: 10
   _rotationSpeed: 7
+--- !u!114 &5000492728228713256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4798689556220629397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 769a32c7325f3c746ad638d346cef450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletPrefab: {fileID: 2533798996721437632, guid: 54e7ad3073701b445a8788b33facf0ff,
+    type: 3}
 --- !u!1 &7697146840815952626
 GameObject:
   m_ObjectHideFlags: 0

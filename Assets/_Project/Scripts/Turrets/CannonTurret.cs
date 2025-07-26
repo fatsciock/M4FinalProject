@@ -6,11 +6,11 @@ public class CannonTurret : AbstractTurret
 {
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private Transform _turret;
-    [SerializeField] private Bullet _bulletPrefab;
     [SerializeField] private float _rangeOfShoot = 10f;
     [SerializeField] private float _rotationSpeed = 5f;
     private float _distanceFromPlayer = 0f;
     private Transform _playerTrasform;
+    private BulletSpawner _bulletSpawner;
 
     void Start()
     {
@@ -21,6 +21,10 @@ public class CannonTurret : AbstractTurret
         if (_turret == null)
         {
             _turret = transform.Find("Torretta");
+        }
+        if (_bulletSpawner == null)
+        {
+            _bulletSpawner = GetComponent<BulletSpawner>();
         }
 
         GameObject _player = GameObject.FindGameObjectWithTag("Player");
@@ -41,7 +45,7 @@ public class CannonTurret : AbstractTurret
 
     private void Fire(Vector3 direction)
     {
-        Bullet b = Instantiate(_bulletPrefab);
+        Bullet b = _bulletSpawner.GetBullet();
         b.Init(_bulletDamage, _bulletSpeed, _bulletLifeSpan);
         b.Shoot(_spawnPoint.position, direction);
     }
